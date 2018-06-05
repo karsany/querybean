@@ -1,0 +1,48 @@
+<querybean>
+	<beans>
+		<bean>
+			<class>Dual</class>
+			<package>hu.karsany.querybean.test</package>
+			<connection>tstOra</connection>
+			<query>
+				select t.*, 1 as num_col, to_date('99991231','yyyymmdd') dtcol from dual t
+			</query>
+		</bean>
+		
+		<bean>
+			<class>UserTables</class>
+			<package>hu.karsany.querybean.test</package>
+			<connection>tstOra2</connection>
+			<query>
+				select * from USER_TABLES
+			</query>
+		</bean>
+
+		<bean>
+			<class>InformationSchemaTable</class>
+			<package>hu.karsany.querybean.test</package>
+			<connection>tstH2</connection>
+			<query>
+				select * from information_Schema.tables
+			</query>
+		</bean>
+	</beans>	
+	
+	<connections>
+		<connection>
+			<name>tstOra</name>
+			<url>jdbc:oracle:thin:obridge/obridge@localhost:1521:xe</url>
+		</connection>
+		<connection>
+			<name>tstOra2</name>
+			<url>jdbc:oracle:thin:@localhost:1521:xe</url>
+			<user>hr</user>
+			<password>hr</password>
+		</connection>
+		<connection>
+			<name>tstH2</name>
+			<url>jdbc:h2:mem:test_mem</url>
+		</connection>		
+	</connections>
+	
+</querybean>
